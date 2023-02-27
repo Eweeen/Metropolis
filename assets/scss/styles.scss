@@ -1,0 +1,215 @@
+/* ============================== IMPORTS ============================== */
+@import 'variables';
+
+/* ============================== RESET ============================== */
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul, li {
+    list-style-type: none;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    font-family: 'kanit', sans-serif;
+    background-color: $black;
+    color: $white;
+}
+
+/* ============================== NAV ============================== */
+nav {
+    width: 100%;
+    font-family: Helvetica, sans-serif;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    opacity: 0;
+    animation: 1s navBarDown forwards;
+    padding: 12px 32px 32px;
+    @include laptop {
+        padding: 32px 48px;
+    }
+    .menu {
+        @include desktop {
+            display: none;
+        }
+    }
+    ul {
+        padding-top: 8px;
+        display: flex;
+        gap: 40px;
+        &.icons-list {
+            display: none;
+            justify-content: end;
+            @include laptop {
+                display: flex;
+            }
+        }
+        li {
+            text-transform: uppercase;
+        }
+    }
+    .nav-list {
+        display: none;
+        @include desktop {
+            display: flex;
+        }
+    }
+    .title-brand {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        h1 {
+            font-size: 44px;
+            font-family: serif;
+        }
+        h2 {
+            text-transform: uppercase;
+            line-height: 10px;
+            font-size: 20px;
+        }
+    }
+}
+
+header {
+    h1 {
+        text-align: center;
+        text-transform: uppercase;
+        font-size: calc(20000vw / 1920);
+        line-height: 1;
+        overflow: hidden;
+        @include up-phone {
+            font-size: calc(14000vw / 1920);
+        }
+        @include laptop {
+            font-size: calc(8000vw / 1920);
+            letter-spacing: 2px;
+        }
+        span {
+            opacity: 0;
+            transform: translateY(100%);
+            display: inline-block;
+            animation: 1s 0.3s titleFromBottom forwards;
+        }
+        &:nth-child(2) {
+            color: transparent;
+            -webkit-text-stroke: 2px $white;
+            text-stroke: 2px $white;
+            @include tablet {
+                -webkit-text-stroke: 3px $white;
+                text-stroke: 3px $white;
+            }
+            @include laptop {
+                -webkit-text-stroke: 4px $white;
+                text-stroke: 4px $white;
+            }
+            span {
+                animation: 1s 0.6s titleFromBottom forwards;
+            }
+        }
+    }
+}
+
+section {
+    flex: 1 1 0%;
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    div {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        .img {
+            width: 100%;
+            height: 100%;
+            background-image: url('../img/1.jpeg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+
+            opacity: 0;
+            transform: translateX(-100%);
+            animation: 1.3s 0.6s imgFromLeft forwards;
+        }
+        &:nth-child(2) {
+            .img {
+                background-image: url('../img/2.jpeg');
+                animation: 1.3s 0.6s imgFromTop forwards;
+            }
+        }
+        &:nth-child(3) {
+            .img {
+                background-image: url('../img/3.jpeg');
+                animation: 1.3s 0.6s imgFromRight forwards;
+            }
+        }
+    }
+}
+
+@keyframes navBarDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+
+@keyframes titleFromBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+
+@keyframes imgFromLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+}
+
+@keyframes imgFromTop {
+    0% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+
+@keyframes imgFromRight {
+    0% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+}
