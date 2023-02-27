@@ -10,5 +10,5 @@ Je me suis basé sur le même design que lui mais j'ai fais mes propres animatio
 Si vous voulez compiler le sass une seule fois il faudra enlever le tag `--watch`
 
 ```
-sass --watch assets/SCSS/styles.scss assets/CSS/styles.css
+sass --watch assets/scss/styles.scss assets/css/styles.css
 ```
